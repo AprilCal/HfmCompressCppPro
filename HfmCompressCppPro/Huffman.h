@@ -37,7 +37,7 @@ public:
 	void showTree();
 	~HuffmanTree()
 	{
-
+		delete[] tree;
 	}
 };
 

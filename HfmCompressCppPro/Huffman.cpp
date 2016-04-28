@@ -16,7 +16,7 @@ int HuffmanTree::selectMin(HTNode *p, int n, int &s1)
 	s1 = INT16_MAX;
 	
 	int num;
-	for (int i = 0;i <= size;i++)
+	for (int i = 0;i < size;i++)
 	{
 		if (p[i].parent == 0 && p[i].weight < s1)
 		{
@@ -27,27 +27,6 @@ int HuffmanTree::selectMin(HTNode *p, int n, int &s1)
 	
 	p[num].parent = n;
 	return num;
-	//int i = 0;
-	//for (;i < size;i++)
-	//{
-	//	if (p[i].parent == 0)
-	//		//temp = p[i].weight;
-	//		s1 = p[i].weight;
-	//}
-	//int num = i;
-	//for (int i = 0;i < size;i++)
-	//{
-	//	if (p[i].weight <s1 && p[i].parent == 0)
-	//	{
-	//		//temp = p[i].weight;
-	//		s1 = p[i].weight;
-	//		num = i;
-	//	}
-	//}
-
-	//p[num].parent = n;
-	////s1 = temp;
-	//return num;
 }
 
 void HuffmanTree::showTree()
@@ -64,6 +43,8 @@ HuffmanTree::HuffmanTree(int *p, int n)
 	leafSize = n;
 	size = 2 * n - 1;
 
+	cout << size<<endl;
+
 	for (int i = 0;i < n;i++)
 	{
 		tree[i].weight = p[i];
@@ -79,11 +60,13 @@ HuffmanTree::HuffmanTree(int *p, int n)
 		tree[i].lchild = 0;
 		tree[i].rchild = 0;
 	}
+	cout << size<<endl;
+	showTree();
 
 	for (int i = n;i < (2 * n - 1);i++)
 	{
-		int s1;
-		int s2;
+		int s1=0;
+		int s2=0;
 		int a = selectMin(tree, i, s1);
 		int b = selectMin(tree, i, s2);
 		cout << s1 << " " << s2 << " " << a << " " << b << endl;
@@ -91,5 +74,4 @@ HuffmanTree::HuffmanTree(int *p, int n)
 		tree[i].lchild = a;
 		tree[i].rchild = b;
 	}
-
 }
