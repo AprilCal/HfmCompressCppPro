@@ -33,14 +33,18 @@ int main()
 	//}
 	//fclose(in);
 
-	int *p;
-	p = new int[8] { 5, 29, 7, 8, 14, 23, 3, 11 };
-	//int a[8] = { 5,29,7,8,14,23,3,11 };
-	HuffmanTree ht=HuffmanTree(p,8);
+	//int *p;
+	//p = new int[8] { 5, 29, 7, 8, 14, 23, 3, 11 };
+	int a[8] = { 5,29,7,8,14,23,3,11 };
+	HuffmanTree ht=HuffmanTree(a,8);
 	ht.showTree();
 	cout << "success" << endl;
 	
-	delete []p;
+	char b = 'ÎÒ';
+	cout << sizeof(b)<< b<<"aaa";
+	//delete []p;
+
+	
 	 
     return 0;
 }
