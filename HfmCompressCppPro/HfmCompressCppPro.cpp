@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include <iostream>
 #include <iomanip>
+#include <string.h>
 #include "huffman.h"
 
 using namespace std;
@@ -33,18 +34,16 @@ int main()
 	//}
 	//fclose(in);
 
-	//int *p;
-	//p = new int[8] { 5, 29, 7, 8, 14, 23, 3, 11 };
 	int a[8] = { 5,29,7,8,14,23,3,11 };
 	HuffmanTree ht=HuffmanTree(a,8);
 	ht.showTree();
 	cout << "success" << endl;
-	
-	char b = 'ÎÒ';
-	cout << sizeof(b)<< b<<"aaa";
-	//delete []p;
 
-	
+	/*char * a[4];
+	a[0] = new char[4]{'1','2','3','\0'};
+	a[1] = new char[3];
+	strcpy_s(a[1],sizeof(a[1]), a[0]);
+	cout << a[0]<<a[1];*/
 	 
     return 0;
 }

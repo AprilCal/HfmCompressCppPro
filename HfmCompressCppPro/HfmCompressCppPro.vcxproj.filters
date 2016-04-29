@@ -27,6 +27,9 @@
     <ClInclude Include="Huffman.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Compress.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -36,6 +39,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Huffman.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Compress.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

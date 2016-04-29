@@ -1,4 +1,2 @@
-﻿  HfmCompressCppPro.cpp
-d:\vsworkspace\project\hfmcompresscpppro\hfmcompresscpppro\hfmcompresscpppro.cpp(43): warning C4305: “初始化”: 从“int”到“char”截断
-d:\vsworkspace\project\hfmcompresscpppro\hfmcompresscpppro\hfmcompresscpppro.cpp(43): warning C4309: “初始化”: 截断常量值
+﻿  Huffman.cpp
   HfmCompressCppPro.vcxproj -> D:\VSWorkSpace\project\HfmCompressCppPro\Debug\HfmCompressCppPro.exe

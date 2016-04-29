@@ -19,6 +19,8 @@ class HuffmanTree
 private:
 	// an array of HTNode
 	HTNode * tree;
+	// to store HuffmanCode
+	char* huffmanCode[256];
 	// the number of leaf node
 	int leafSize;
 	// number of all node
@@ -26,6 +28,8 @@ private:
 
 	// select a minimal weight from {tree}
 	int selectMin(HTNode *p, int n, int &s1);
+
+	void createHuffmanCode();
 	
 public:
 	HuffmanTree(int *p, int n);
@@ -35,10 +39,8 @@ public:
 
 	}
 	void showTree();
-	~HuffmanTree()
-	{
-		delete[] tree;
-	}
+	~HuffmanTree();
+
 };
 
 #endif // !HUFFMAN_H

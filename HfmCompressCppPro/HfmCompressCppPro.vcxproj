@@ -145,11 +145,13 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Compress.h" />
     <ClInclude Include="Huffman.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Compress.cpp" />
     <ClCompile Include="HfmCompressCppPro.cpp" />
     <ClCompile Include="Huffman.cpp" />
     <ClCompile Include="stdafx.cpp">
