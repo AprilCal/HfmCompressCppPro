@@ -29,18 +29,18 @@ private:
 	// select a minimal weight from {tree}
 	int selectMin(HTNode *p, int n, int &s1);
 
+	void showTree();
+
 	void createHuffmanCode();
 	
 public:
 	HuffmanTree(int *p, int n);
 
-	void printHuffmanCode()
-	{
-
-	}
-	void showTree();
+	char** getHuffmanCodoArray();
+	
 	~HuffmanTree();
 
 };
 
 #endif // !HUFFMAN_H
+

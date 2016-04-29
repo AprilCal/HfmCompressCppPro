@@ -16,7 +16,7 @@ int HuffmanTree::selectMin(HTNode *p, int n, int &s1)
 	s1 = INT16_MAX;
 	
 	int num;
-	for (int i = 0;i < size;i++)
+	for (int i = 1;i <=size;i++)
 	{
 		if (p[i].parent == 0 && p[i].weight < s1)
 		{
@@ -31,16 +31,16 @@ int HuffmanTree::selectMin(HTNode *p, int n, int &s1)
 
 void HuffmanTree::createHuffmanCode()
 {
-	char cd[256];
+	char cd[256] = {'\0'};
 	int cdlen = 0;//note length
 
-	for (int i = 0;i < size;i++)
+	for (int i = 1;i <=size;i++)
 	{
 		//flag
 		tree[i].weight = 0;
 	}
 
-	int p = size-1;//root
+	int p = size;//root
 
 	while (p != 0)
 	{
@@ -54,9 +54,12 @@ void HuffmanTree::createHuffmanCode()
 			}
 			else if (tree[p].rchild == 0)
 			{
-				huffmanCode[p] = new char[cdlen];
+				huffmanCode[p-1] = new char[256];
 				cd[cdlen] = '\0';
-				strcpy_s(huffmanCode[p],sizeof(huffmanCode[p]), cd);
+				//cout << cdlen << endl;
+				//cout << cd << endl;
+				//cout << sizeof(huffmanCode[p]) << endl;
+				strcpy_s(huffmanCode[p-1],256, cd);
 			}
 		}
 		
@@ -78,15 +81,15 @@ void HuffmanTree::createHuffmanCode()
 		}
 	}//while
 
-	//for (int i = 0;i < 15;i++)
+	//for (int i = 0;i < leafSize;i++)
 	//{
-	//	cout << huffmanCode[i][1];
+	//	cout << huffmanCode[i] << endl;
 	//}
 }
 
 void HuffmanTree::showTree()
 {
-	for (int i = 0;i < size;i++)
+	for (int i = 1;i <=size;i++)
 	{
 		cout << i << " " << tree[i].weight << " " << tree[i].parent << " " << tree[i].lchild << " " << tree[i].rchild << endl;
 	}
@@ -94,19 +97,19 @@ void HuffmanTree::showTree()
 
 HuffmanTree::HuffmanTree(int *p, int n)
 {
-	tree = new HTNode[2 * n - 1];
+	tree = new HTNode[2 * n];
 	leafSize = n;
-	size = 2 * n - 1;
+	size = 2 * n-1;
 
-	for (int i = 0;i < n;i++)
+	for (int i = 1;i <= leafSize;i++)
 	{
-		tree[i].weight = p[i];
+		tree[i].weight = p[i-1];
 		tree[i].parent = 0;
 		tree[i].lchild = 0;
 		tree[i].rchild = 0;
 	}
 
-	for (int i = n;i < (2 * n - 1);i++)
+	for (int i = leafSize + 1;i <=size ;i++)
 	{
 		tree[i].weight = INT16_MAX;
 		tree[i].parent = 0;
@@ -116,7 +119,7 @@ HuffmanTree::HuffmanTree(int *p, int n)
 
 	showTree();
 
-	for (int i = n;i < (2 * n - 1);i++)
+	for (int i = leafSize + 1;i <= size;i++)
 	{
 		int s1=0;
 		int s2=0;
@@ -127,8 +130,13 @@ HuffmanTree::HuffmanTree(int *p, int n)
 		tree[i].lchild = a;
 		tree[i].rchild = b;
 	}
+	showTree();
+	createHuffmanCode();
+}
 
-	//createHuffmanCode();
+char** HuffmanTree::getHuffmanCodoArray()
+{
+	return huffmanCode;
 }
 
 HuffmanTree::~HuffmanTree()
