@@ -1,19 +1,20 @@
 #include "stdafx.h"
+#include "Huffman.h"
 #include "Compress.h"
 #include <iostream>
 
-char Compress::Str2Byte(const char *pBinStr)
+char Compress::str2Byte(const char *pBinStr)
 {
 	char b = 0x00;
 	for (int i = 0;i < 8;i++)
 	{
 		b = b << 1;
-		if (pBinStr[i] == '1');
+		if (pBinStr[i] == '1')
 		{
 			b = b | 0x01;
 		}
-		return b;
 	}
+		return b;
 }
 
 void Compress::Encode()

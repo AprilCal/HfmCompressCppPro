@@ -1,5 +1,3 @@
-﻿  Compress.cpp
-d:\vsworkspace\project\hfmcompresscpppro\hfmcompresscpppro\compress.cpp(11): warning C4390: “;”: 找到空的受控语句；这是否是有意的?
-d:\vsworkspace\project\hfmcompresscpppro\hfmcompresscpppro\compress.cpp(30): warning C4101: “cd”: 未引用的局部变量
-d:\vsworkspace\project\hfmcompresscpppro\hfmcompresscpppro\compress.cpp(17): warning C4715: “Compress::Str2Byte”: 不是所有的控件路径都返回值
+﻿  HfmCompressCppPro.cpp
+d:\vsworkspace\project\hfmcompresscpppro\hfmcompresscpppro\hfmcompresscpppro.cpp(120): warning C4101: “ch”: 未引用的局部变量
   HfmCompressCppPro.vcxproj -> D:\VSWorkSpace\project\HfmCompressCppPro\Debug\HfmCompressCppPro.exe

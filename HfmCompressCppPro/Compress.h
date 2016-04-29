@@ -3,15 +3,22 @@
 #ifndef COMPRESS_H
 #define COMPRESS_H
 
-#include<iostream>
+#include "Huffman.h"
+#include <iostream>
 using namespace std;
+
+struct Head
+{
+
+	int length;
+	int weight[256];
+};
 
 class Compress
 {
-public:
 private:
 	//change binString into byte
-	char Str2Byte(const char *pBinStr);
+	char str2Byte(const char *pBinStr);
 	void Encode();
 };
 
