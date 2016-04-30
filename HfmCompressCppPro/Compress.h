@@ -11,14 +11,15 @@ struct Head
 {
 
 	int length;
-	int weight[256];
+	//int weight[256];
 };
 
 class Compress
 {
 private:
 	//change binString into byte
-	char str2Byte(const char *pBinStr);
+public:
+	static char str2Byte(const char *pBinStr);
 	void Encode();
 };
 
