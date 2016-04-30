@@ -25,113 +25,115 @@ char str2Byte(const char *pBinStr)
 
 int main()
 {
-	//cout << "Huffman File Compress Pro..." << endl;
-	//cout << "please input file name:";
-	//char filename[256];
-	//cin >> filename;
+	cout << "Huffman File Compress Pro..." << endl;
+	cout << "please input file name:";
+	char filename[256];
+	char filename2[256];
+	cin >> filename;
+	cin >> filename2;
 
-	//int weight[256] = { 0 };
-	//FILE *in;
-	//errno_t err = fopen_s(&in, filename, "rb");
-
-
-	//int ch;
-	//while ((ch = getc(in)) != EOF)
-	//{
-	//	weight[ch]++;
-	//}
-	//cout << "Byte " << "Weight" << endl;
-	////for (int i = 0;i < 256;i++)
-	////{
-	////	cout << "Ox" << "%X"<<i << setw(10);
-	////	cout << weight[i] << " " << endl;
-	////}
-	//fclose(in);
-
-
-
-	//HuffmanTree ht = HuffmanTree(weight, 256);
-
-	//char** code = ht.getHuffmanCodoArray();
-	//for (int i = 0;i < 256;i++)
-	//{
-	//	cout << code[i]<<endl;
-	//}
-
-
-	//FILE *in2;
-	//errno_t err2 = fopen_s(&in2, filename, "rb");
-	//char *pBuffer;
-	//int pos = 0;
-
-	//char cd[30] = { 0 };
-
-	//pBuffer = new char[10];
-	//if (!pBuffer)
-	//{
-	//	cout << "failed to create field";
-	//}
-
-	//int ch2;
-	//while ((ch2 = getc(in2)) != EOF)
-	//{
-	//	strcat_s(cd, code[ch2]);
-	//	while (strlen(cd) >= 8)
-	//	{
-	//		pBuffer[pos++] = str2Byte(cd);
-	//		cout << pBuffer[pos - 1];
-	//		for (int i = 0;i < 30 - 8;i++)
-	//		{
-	//			cd[i] = cd[i + 8];
-	//		}
-	//	}
-
-	//	//if (strlen(cd) > 0)
-	//	//{
-	//	//	pBuffer[pos++] = str2Byte(cd);
-	//	//}
-	//}
-
-	//fclose(in2);
-	//cout << "success" << endl;
-
-	struct Stu
-	{
-		int a;
-		int b;
-	};
-	Stu s1;
-	s1.a = 1;
-	s1.b = 2;
-	Stu s2;
-	s2.a = 3;
-	s2.b = 4;
+	int weight[256] = { 0 };
 	FILE *in;
-	errno_t err = fopen_s(&in, "d:\\cloud\\23.txt", "wb");
-	fwrite(&s1, sizeof(s1), 1, in);
-	fwrite(&s2, sizeof(s2), 1, in);
-
-	char a = '1';
-	fwrite(&a,sizeof(a),1,in);
-	
-
-	fclose(in);
+	errno_t err = fopen_s(&in, filename, "rb");
 
 	int ch;
+	while ((ch = getc(in)) != EOF)
+	{
+		weight[ch]++;
+	}
+	fclose(in);
+
+	HuffmanTree ht = HuffmanTree(weight, 256);
+
+	char** code = ht.getHuffmanCodoArray();
+	for (int i = 0;i < 256;i++)
+	{
+		cout << code[i]<<endl;
+	}
+
+	FILE *in2;
 	FILE *out;
-	errno_t err2 = fopen_s(&out,"d:\\cloud\\23.txt", "rb");
+	errno_t err3 = fopen_s(&out, filename2, "wb");
+	errno_t err2 = fopen_s(&in2, filename, "rb");
+	char *pBuffer;
+	int pos = 0;
+	char cd[256] = { 0 };
+	pBuffer = new char[18];
+	if (!pBuffer)
+	{
+		cout << "failed to create field";
+	}
 
-	Stu s3,s4;
-	char a2;
+	int ch2;
+	while ((ch2 = getc(in2)) != EOF)
+	{
+		strcat_s(cd, code[ch2]);
+		while (strlen(cd) >= 8)
+		{
+			pBuffer[pos++] = str2Byte(cd);
+			fwrite(&pBuffer[pos - 1], 1, 1, out);
+			cout << pBuffer[pos - 1];
+			
+			for (int i = 0;i < 256 - 8;i++)
+			{
+				cd[i] = cd[i + 8];
+			}
+		}
+		if (pos >= 16)
+		{
+			pos = 0;
+		} 
+		//if (strlen(cd) > 0)
+		//{
+		//	pBuffer[pos++] = str2Byte(cd);
+		//}
+	}
 
-	fread(&s3, sizeof(s3), 1, out);
-	fread(&s4, sizeof(s4), 1, out);
-	fread(&a2, sizeof(a2), 1, out);
-
+	fclose(in2);
 	fclose(out);
-	cout << s3.a << " " << s3.b << endl;
-	cout << s4.a << " " << s4.b << endl<<a2;
-
+	cout << "success" << endl;
+	delete[] pBuffer;
     return 0;
 }
 
+
+//d:\cloud\123.txt
+//	//struct Stu
+//	//{
+//	//	int a;
+//	//	int b;
+//	//};
+//	//Stu s1;
+//	//s1.a = 1;
+//	//s1.b = 2;
+//	//Stu s2;
+//	//s2.a = 3;
+//	//s2.b = 4;
+//	//FILE *in;
+//	//errno_t err = fopen_s(&in, "d:\\cloud\\23.txt", "wb");
+//	//fwrite(&s1, sizeof(s1), 1, in);
+//	//fwrite(&s2, sizeof(s2), 1, in);
+//
+//	//char a = '1';
+//	//fwrite(&a,sizeof(a),1,in);
+//	//
+//
+//	//fclose(in);
+//
+//	//int ch;
+//	//FILE *out;
+//	//errno_t err2 = fopen_s(&out,"d:\\cloud\\23.txt", "rb");
+//
+//	//Stu s3,s4;
+//	//char a2;
+//
+//	//fread(&s3, sizeof(s3), 1, out);
+//	//fread(&s4, sizeof(s4), 1, out);
+//	//fread(&a2, sizeof(a2), 1, out);
+//
+//	//fclose(out);
+//	//cout << s3.a << " " << s3.b << endl;
+//	//cout << s4.a << " " << s4.b << endl << a2 << endl;
+//
+//	return 0;
+//}
