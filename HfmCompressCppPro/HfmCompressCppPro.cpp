@@ -72,7 +72,7 @@ int main()
 		{
 			pBuffer[pos++] = str2Byte(cd);
 			fwrite(&pBuffer[pos - 1], 1, 1, out);
-			cout << pBuffer[pos - 1];
+			//cout << pBuffer[pos - 1];
 			
 			for (int i = 0;i < 256 - 8;i++)
 			{

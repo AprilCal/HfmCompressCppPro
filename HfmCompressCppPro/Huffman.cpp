@@ -13,7 +13,7 @@ construct and get HuffmanCode
 **************************************************/
 int HuffmanTree::selectMin(HTNode *p, int n, int &s1)
 {
-	s1 = INT16_MAX;
+	s1 = INT32_MAX;
 	
 	int num;
 	for (int i = 1;i <=size;i++)
@@ -111,7 +111,7 @@ HuffmanTree::HuffmanTree(int *p, int n)
 
 	for (int i = leafSize + 1;i <=size ;i++)
 	{
-		tree[i].weight = INT16_MAX;
+		tree[i].weight = INT32_MAX;
 		tree[i].parent = 0;
 		tree[i].lchild = 0;
 		tree[i].rchild = 0;
@@ -125,7 +125,7 @@ HuffmanTree::HuffmanTree(int *p, int n)
 		int s2=0;
 		int a = selectMin(tree, i, s1);
 		int b = selectMin(tree, i, s2);
-		cout << s1 << " " << s2 << " " << a << " " << b << endl;
+		//cout << s1 << " " << s2 << " " << a << " " << b << endl;
 		tree[i].weight = s1 + s2;
 		tree[i].lchild = a;
 		tree[i].rchild = b;
