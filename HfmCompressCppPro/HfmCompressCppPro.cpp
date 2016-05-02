@@ -18,8 +18,7 @@ using namespace std;
 Copyright: AprilCal
 Author: AprilCal
 Date: 2016-05-02
-Description: A Huffman Tree contains method to
-construct and get HuffmanCode
+Description: Program entry
 **************************************************/
 int main()
 {

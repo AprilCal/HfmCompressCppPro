@@ -7,8 +7,7 @@
 Copyright: AprilCal
 Author: AprilCal
 Date: 2016-05-02
-Description: A Huffman Tree contains method to
-construct and get HuffmanCode
+Description: XD
 **************************************************/
 char Compress::str2Byte(const char *pBinStr)
 {
