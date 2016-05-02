@@ -5,6 +5,7 @@
 
 #include "Huffman.h"
 #include <iostream>
+#include <io.h>
 using namespace std;
 
 struct Head
@@ -20,7 +21,7 @@ private:
 	//change binString into byte
 public:
 	static char str2Byte(const char *pBinStr);
-	void Encode();
+	static void compress(char *filename, char *filename2, char **code);
 };
 
 #endif // !COMPRESS_H

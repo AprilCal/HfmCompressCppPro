@@ -130,7 +130,6 @@ HuffmanTree::HuffmanTree(int *p, int n)
 		tree[i].lchild = a;
 		tree[i].rchild = b;
 	}
-	showTree();
 	createHuffmanCode();
 }
 

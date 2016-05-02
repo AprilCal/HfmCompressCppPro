@@ -24,7 +24,6 @@ private:
 	int leafSize;
 	// number of all node
 	int size;
-
 	// select a minimal weight from {tree}
 	int selectMin(HTNode *p, int n, int &s1);
 
@@ -40,8 +39,6 @@ public:
 	char** getHuffmanCodoArray();
 	
 	~HuffmanTree();
-
 };
-
 #endif // !HUFFMAN_H
 
