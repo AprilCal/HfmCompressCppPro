@@ -19,6 +19,7 @@ struct Head
 {
 
 	int length;
+	//HTNode tree[511];
 	//int weight[256];
 };
 
