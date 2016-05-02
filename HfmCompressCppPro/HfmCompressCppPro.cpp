@@ -75,7 +75,8 @@ int main()
 	}
 
 	Head head;
-	head.length = 10;
+	//head.length = 10;
+	head.length = _filelength(_fileno(in2));
 	int ch2;
 	//write file head
 	fwrite(&head, 4, 1, out);
@@ -121,9 +122,11 @@ int main()
 	char decode[256];
 	fread(&_head, sizeof(_head), 1, _in);
 
+	cout << "head:length" << _head.length;
+
 
 	FILE *_out;
-	errno_t _err2 = fopen_s(&_out,"d:\\cloud\\56.txt", "wb");
+	errno_t _err2 = fopen_s(&_out,"d:\\cloud\\56.png", "wb");
 	char end = EOF;
 	
 
@@ -140,29 +143,9 @@ int main()
 	while ((_ch = getc(_in)) != EOF)
 	{
 		s =s + int2str(_ch);
-		//while ((int)s.size() > 10)
-		//{
-		//	int i;
-		//	for (i = 511;ht.tree[i].lchild != 0;)
-		//	{
-		//		if (s[0] == '0')
-		//		{
-		//			i = ht.tree[i].lchild;
-		//		}
-		//		else if (s[0] == '1')
-		//		{
-		//			i = ht.tree[i].rchild;
-		//		}
-		//		else
-		//		{
-		//			goto
-		//		}
-		//		s.erase(0, 1);
-		//	}
-		//	char a = i-1;
-		//	cout << endl << a;
-		//}
 	}
+
+	//write code into new file
 	int length=0;
 	while ((int)s.size() > 0)
 	{
@@ -179,7 +162,7 @@ int main()
 			}
 			s.erase(0, 1);
 		}
-		if (length>=14)
+		if (length>=_head.length)
 		{
 			break;
 		}
@@ -188,7 +171,7 @@ int main()
 			char a = i-1;
 			fwrite(&a, 1, 1, _out);
 			length++;
-			cout << endl << a;
+			//cout << endl << a;
 		}
 	}
 
@@ -199,34 +182,8 @@ int main()
 	fclose(_out);
     return 0;
 }
-
-
 //d:\cloud\123.txt
-//	//FILE *in;
-//	//errno_t err = fopen_s(&in, "d:\\cloud\\23.txt", "wb");
-//	//fwrite(&s1, sizeof(s1), 1, in);
-//	//fwrite(&s2, sizeof(s2), 1, in);
-//
-//	//char a = '1';
-//	//fwrite(&a,sizeof(a),1,in);
-//	//
-//
-//	//fclose(in);
-//
-//	//int ch;
-//	//FILE *out;
-//	//errno_t err2 = fopen_s(&out,"d:\\cloud\\23.txt", "rb");
-//
-//	//Stu s3,s4;
-//	//char a2;
-//
-//	//fread(&s3, sizeof(s3), 1, out);
-//	//fread(&s4, sizeof(s4), 1, out);
-//	//fread(&a2, sizeof(a2), 1, out);
-//
-//	//fclose(out);
-//	//cout << s3.a << " " << s3.b << endl;
-//	//cout << s4.a << " " << s4.b << endl << a2 << endl;
-//
-//	return 0;
-//}
+//d:\cloud\123.jpeg
+//d:\cloud\123.jpeg.huf
+//d:\cloud\123.png
+//d:\cloud\1234.png.huf
