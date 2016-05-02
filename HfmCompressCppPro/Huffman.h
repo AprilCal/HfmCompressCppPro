@@ -18,7 +18,6 @@ class HuffmanTree
 {
 private:
 	// an array of HTNode
-	HTNode * tree;
 	// to store HuffmanCode
 	char* huffmanCode[256];
 	// the number of leaf node
@@ -34,6 +33,8 @@ private:
 	void createHuffmanCode();
 	
 public:
+	HTNode * tree;
+
 	HuffmanTree(int *p, int n);
 
 	char** getHuffmanCodoArray();

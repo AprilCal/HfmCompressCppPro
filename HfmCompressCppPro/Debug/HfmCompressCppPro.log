@@ -1,5 +1,2 @@
-﻿  HfmCompressCppPro.cpp
-  Compress.cpp
-d:\vsworkspace\project\hfmcompresscpppro\hfmcompresscpppro\compress.cpp(31): warning C4101: “cd”: 未引用的局部变量
-  正在生成代码...
+﻿  DeCompress.cpp
   HfmCompressCppPro.vcxproj -> D:\VSWorkSpace\project\HfmCompressCppPro\Debug\HfmCompressCppPro.exe

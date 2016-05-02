@@ -4,29 +4,35 @@
 #include <iostream>
 #include <iomanip>
 #include <string.h>
+#include <string>
+#include <tchar.h>
+#include <io.h>
 #include "huffman.h"
 #include "Compress.h"
-
 using namespace std;
 
-//char str2Byte(const char *pBinStr)
-//{
-//	char b = 0x00;
-//	for (int i = 0;i < 8;i++)
-//	{
-//		b = b << 1;
-//		if (pBinStr[i] == '1')
-//		{
-//			b = b | 0x01;
-//		}
-//	}
-//		return b;
-//}
+//convert a int num into a bin string
+string int2str(int num)
+{
+	string s;
+	while (true)
+	{
+		s = ((num % 2) ? "1" : "0") + s;
+		num = num / 2;
+		if (num == 0)
+		{
+			break;
+		}
+	}
+	while ((int)s.size() < 8)
+	{
+		s = "0" + s;
+	}
+	return s;
+}
 
 int main()
 {
-	Head head;
-	head.length = 10;
 
 	cout << "Huffman File Compress Pro..." << endl;
 	cout << "please input file name:";
@@ -58,6 +64,7 @@ int main()
 	FILE *out;
 	errno_t err3 = fopen_s(&out, filename2, "wb");
 	errno_t err2 = fopen_s(&in2, filename, "rb");
+
 	char *pBuffer;
 	int pos = 0;
 	char cd[256] = { 0 };
@@ -67,6 +74,8 @@ int main()
 		cout << "failed to create field";
 	}
 
+	Head head;
+	head.length = 10;
 	int ch2;
 	//write file head
 	fwrite(&head, 4, 1, out);
@@ -88,11 +97,6 @@ int main()
 		{
 			pos = 0;
 		} 
-		//if (strlen(cd) > 0)
-		//{
-		//	pBuffer[pos++] = str2Byte(cd);
-		//	cout << pBuffer[pos - 1];
-		//}
 	}
 	if (strlen(cd) > 0)
 	{
@@ -104,17 +108,96 @@ int main()
 	fclose(in2);
 	fclose(out);
 	cout << "success" << endl;
+
+
 	delete[] pBuffer;
+	cout << endl;
+
+
+	//read file head
+	Head _head;
+	FILE *_in;
+	errno_t _err = fopen_s(&_in, filename2, "rb");
+	char decode[256];
+	fread(&_head, sizeof(_head), 1, _in);
+
+
+	FILE *_out;
+	errno_t _err2 = fopen_s(&_out,"d:\\cloud\\56.txt", "wb");
+	char end = EOF;
+	
+
+
+
+	//if (_in)
+	//{
+	//	int size = _filelength(_fileno(_in));
+	//	cout<< "size:" <<size<< endl;
+	//}
+
+	int _ch;
+	string s;
+	while ((_ch = getc(_in)) != EOF)
+	{
+		s =s + int2str(_ch);
+		//while ((int)s.size() > 10)
+		//{
+		//	int i;
+		//	for (i = 511;ht.tree[i].lchild != 0;)
+		//	{
+		//		if (s[0] == '0')
+		//		{
+		//			i = ht.tree[i].lchild;
+		//		}
+		//		else if (s[0] == '1')
+		//		{
+		//			i = ht.tree[i].rchild;
+		//		}
+		//		else
+		//		{
+		//			goto
+		//		}
+		//		s.erase(0, 1);
+		//	}
+		//	char a = i-1;
+		//	cout << endl << a;
+		//}
+	}
+	int length=0;
+	while ((int)s.size() > 0)
+	{
+		int i;
+		for (i = 511;ht.tree[i].lchild != 0&&(int)s.size()>0;)
+		{
+			if (s[0] == '0')
+			{
+				i = ht.tree[i].lchild;
+			}
+			else if (s[0] == '1')
+			{
+				i = ht.tree[i].rchild;
+			}
+			s.erase(0, 1);
+		}
+		if (length>=14)
+		{
+			break;
+		}
+		if (ht.tree[i].lchild == 0)
+		{
+			char a = i-1;
+			fwrite(&a, 1, 1, _out);
+			length++;
+			cout << endl << a;
+		}
+	}
+
+	//fseek(_out, 10, SEEK_SET);   /*将文件位置指针移动到文件末尾,-1是为了给后面要写入的“结束标志”留空间*/
+	//fwrite(&end, 1, 1, _out);
+
+	fclose(_in);
+	fclose(_out);
     return 0;
-
-
-	//Head head;
-	//FILE *in;
-	//errno_t err2 = fopen_s(&in, "d:\\cloud\\23.txt", "rb");
-	//fread(&head, sizeof(head), 1, in);
-	//cout << head.length;
-	//fclose(in);
-	//return 0;
 }
 
 
