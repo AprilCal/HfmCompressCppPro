@@ -3,6 +3,13 @@
 #include "Compress.h"
 #include <iostream>
 
+/*************************************************
+Copyright: AprilCal
+Author: AprilCal
+Date: 2016-05-02
+Description: A Huffman Tree contains method to
+construct and get HuffmanCode
+**************************************************/
 char Compress::str2Byte(const char *pBinStr)
 {
 	char b = 0x00;

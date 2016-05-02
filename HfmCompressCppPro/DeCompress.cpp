@@ -3,6 +3,14 @@
 #include "Compress.h"
 #include "DeCompress.h"
 
+/*************************************************
+Copyright: AprilCal
+Author: AprilCal
+Date: 2016-05-02
+Description: A Huffman Tree contains method to
+construct and get HuffmanCode
+**************************************************/
+
 string DeCompress::int2str(int num)
 {
 	string s;
