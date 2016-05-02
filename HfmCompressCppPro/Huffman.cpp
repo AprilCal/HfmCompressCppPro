@@ -56,9 +56,6 @@ void HuffmanTree::createHuffmanCode()
 			{
 				huffmanCode[p-1] = new char[256];
 				cd[cdlen] = '\0';
-				//cout << cdlen << endl;
-				//cout << cd << endl;
-				//cout << sizeof(huffmanCode[p]) << endl;
 				strcpy_s(huffmanCode[p-1],256, cd);
 			}
 		}
@@ -80,11 +77,6 @@ void HuffmanTree::createHuffmanCode()
 			--cdlen;
 		}
 	}//while
-
-	//for (int i = 0;i < leafSize;i++)
-	//{
-	//	cout << huffmanCode[i] << endl;
-	//}
 }
 
 void HuffmanTree::showTree()
@@ -116,8 +108,6 @@ HuffmanTree::HuffmanTree(int *p, int n)
 		tree[i].lchild = 0;
 		tree[i].rchild = 0;
 	}
-
-	showTree();
 
 	for (int i = leafSize + 1;i <= size;i++)
 	{

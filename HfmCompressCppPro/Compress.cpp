@@ -29,6 +29,7 @@ void Compress::compress(char *filename, char *filename2, char **code)
 	FILE *out;
 	errno_t err3 = fopen_s(&out, filename2, "wb");
 	errno_t err2 = fopen_s(&in2, filename, "rb");
+	int lengthAfterCompress = 0;
 
 	char *pBuffer;
 	int pos = 0;
@@ -40,7 +41,6 @@ void Compress::compress(char *filename, char *filename2, char **code)
 	}
 
 	Head head;
-	//head.length = 10;
 	head.length = _filelength(_fileno(in2));
 	int ch2;
 	//write file head
@@ -58,6 +58,7 @@ void Compress::compress(char *filename, char *filename2, char **code)
 			{
 				cd[i] = cd[i + 8];
 			}
+			lengthAfterCompress ++;
 		}
 		if (pos >= 16)
 		{
@@ -68,9 +69,10 @@ void Compress::compress(char *filename, char *filename2, char **code)
 	{
 		pBuffer[pos++] = Compress::str2Byte(cd);
 		fwrite(&pBuffer[pos - 1], 1, 1, out);
-		cout << pBuffer[pos - 1];
+		lengthAfterCompress++;
+		//cout << pBuffer[pos - 1];
 	}
-
+	cout << "compression ratio:" << (double)(head.length - lengthAfterCompress) / head.length * 100 << "%" << endl;
 	fclose(in2);
 	fclose(out);
 	delete[] pBuffer;

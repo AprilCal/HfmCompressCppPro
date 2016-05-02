@@ -38,8 +38,6 @@ void DeCompress::decompress(char *filename2, HuffmanTree *ht)
 	char decode[256];
 	fread(&_head, sizeof(_head), 1, _in);
 
-	cout << "head:length" << _head.length;
-
 	FILE *_out;
 	errno_t _err2 = fopen_s(&_out, "d:\\cloud\\56.png", "wb");
 	char end = EOF;

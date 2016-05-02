@@ -23,12 +23,31 @@ Description: Program entry
 int main()
 {
 	cout << "Huffman File Compress Pro..." << endl;
-	cout << "please input file path & file name:";
+	cout << "input 1 to compress a file" << endl;
+	cout << "input 2 to decompress a file" << endl;
+
 	char filename[256];
-	char filename2[256] = {0};
+	char filename2[256] = { 0 };
 	cin >> filename;
 	strcat_s(filename2, filename);
 	strcat_s(filename2, ".huf");
+
+	int i;
+	while (cin >> i)
+	{
+		switch (i)
+		{
+		case 1:
+			cout << "please input the path of file you want to compress:";
+			break;
+		case 2:
+			cout << "please input the path of file you want to decompress:";
+			break;
+		default:
+			cout << "please input a number between 1 & 2" << endl;
+			break;
+		}
+	}
 
 	//census weight for each byte 
 	int weight[256] = { 0 };
@@ -46,6 +65,7 @@ int main()
 	HuffmanTree ht = HuffmanTree(weight, 256);
 	//get huffman code from class HuffmanTree
 	char** code = ht.getHuffmanCodoArray();
+
 	Compress::compress(filename, filename2,code);
 	DeCompress::decompress(filename2, &ht);
 
@@ -54,5 +74,5 @@ int main()
 //d:\cloud\123.txt
 //d:\cloud\123.jpeg
 //d:\cloud\123.jpeg.huf
-//d:\cloud\123.png
-//d:\cloud\1234.png.huf
+//d:\cloud\12345.png
+//d:\cloud\12345.png.huf
