@@ -2,6 +2,7 @@
 #include "Huffman.h"
 #include "Compress.h"
 #include "DeCompress.h"
+#include <string.h>
 
 /*************************************************
 Copyright: AprilCal
@@ -36,12 +37,21 @@ void DeCompress::decompress(char *filename)
 	FILE *_in;
 	errno_t _err = fopen_s(&_in, filename, "rb");
 	char filename2[256] = { 0 };
-	strcat_s(filename2, filename);
-	strcat_s(filename2, ".huf");
+	int len = strlen(filename);
+	for (int i = 0;i < len-4;i++)
+	{
+		filename2[i] = filename[i];
+	}
+	//char filename3[256] = { 0 };
+	//filename3[0]='n';
+	//filename3[1] = 'e';
+	//filename3[2] = 'w';
+	//filename3[3] = '_';
+	//strcat_s(filename3, filename2);
 	fread(&_head, sizeof(_head), 1, _in);
 
 	FILE *_out;
-	errno_t _err2 = fopen_s(&_out, "d:\\cloud\\56.png", "wb");
+	errno_t _err2 = fopen_s(&_out, filename2, "wb");
 	char end = EOF;
 
 	int _ch;

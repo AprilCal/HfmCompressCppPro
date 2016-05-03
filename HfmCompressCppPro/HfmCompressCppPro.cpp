@@ -61,9 +61,9 @@ int main()
 		}		
 		else if (i == 2)
 		{
+			cout << "please input the path of file you want to decompress:" << endl;
 			char filename[256] = { 0 };
 			cin >> filename;
-			cout << "please input the path of file you want to decompress:" << endl;
 			DeCompress::decompress(filename);
 		}
 		else if (i == 3)
