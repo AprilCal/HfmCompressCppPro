@@ -21,7 +21,7 @@ public:
 	//convert a int num into a bin string
 	static string int2str(int num);
 
-	static void decompress(char *filename2, HuffmanTree *ht);
+	static void decompress(char *filename2);
 private:
 };
 

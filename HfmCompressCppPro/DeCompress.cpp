@@ -29,13 +29,12 @@ string DeCompress::int2str(int num)
 	return s;
 }
 
-void DeCompress::decompress(char *filename, HuffmanTree *ht)
+void DeCompress::decompress(char *filename)
 {
 	//read file head
 	Head _head;
 	FILE *_in;
 	errno_t _err = fopen_s(&_in, filename, "rb");
-	char decode[256];
 	char filename2[256] = { 0 };
 	strcat_s(filename2, filename);
 	strcat_s(filename2, ".huf");
@@ -57,15 +56,15 @@ void DeCompress::decompress(char *filename, HuffmanTree *ht)
 	while ((int)s.size() > 0)
 	{
 		int i;
-		for (i = 511;ht->tree[i].lchild != 0 && (int)s.size()>0;)
+		for (i = 511;_head.tree[i].lchild != 0 && (int)s.size()>0;)
 		{
 			if (s[0] == '0')
 			{
-				i = ht->tree[i].lchild;
+				i = _head.tree[i].lchild;
 			}
 			else if (s[0] == '1')
 			{
-				i = ht->tree[i].rchild;
+				i = _head.tree[i].rchild;
 			}
 			s.erase(0, 1);
 		}
@@ -73,7 +72,7 @@ void DeCompress::decompress(char *filename, HuffmanTree *ht)
 		{
 			break;
 		}
-		if (ht->tree[i].lchild == 0)
+		if (_head.tree[i].lchild == 0)
 		{
 			char a = i - 1;
 			fwrite(&a, 1, 1, _out);

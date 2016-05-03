@@ -23,7 +23,7 @@ char Compress::str2Byte(const char *pBinStr)
 		return b;
 }
 
-void Compress::compress(char *filename, char *filename2, char **code)
+void Compress::compress(char *filename, char *filename2, char **code,HuffmanTree *ht)
 {
 	FILE *in2;
 	FILE *out;
@@ -42,9 +42,16 @@ void Compress::compress(char *filename, char *filename2, char **code)
 
 	Head head;
 	head.length = _filelength(_fileno(in2));
+	for (int i = 1;i < 512;i++)
+	{
+		head.tree[i].weight = ht->tree[i].weight;
+		head.tree[i].parent = ht->tree[i].parent;
+		head.tree[i].lchild = ht->tree[i].lchild;
+		head.tree[i].rchild = ht->tree[i].rchild;
+	}
 	int ch2;
 	//write file head
-	fwrite(&head, 4, 1, out);
+	fwrite(&head, sizeof(Head), 1, out);
 	while ((ch2 = getc(in2)) != EOF)
 	{
 		strcat_s(cd, code[ch2]);

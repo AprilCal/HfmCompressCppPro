@@ -57,14 +57,14 @@ int main()
 			ht=new HuffmanTree(weight, 256);
 			//get huffman code from class HuffmanTree
 			char** code = ht->getHuffmanCodoArray();
-			Compress::compress(filename, filename2, code);
+			Compress::compress(filename, filename2, code, ht);
 		}		
 		else if (i == 2)
 		{
 			char filename[256] = { 0 };
 			cin >> filename;
 			cout << "please input the path of file you want to decompress:" << endl;
-			DeCompress::decompress(filename, ht);
+			DeCompress::decompress(filename);
 		}
 		else if (i == 3)
 		{
