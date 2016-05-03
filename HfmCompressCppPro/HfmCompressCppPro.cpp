@@ -26,8 +26,7 @@ int main()
 	cout << "input 1 to compress a file" << endl;
 	cout << "input 2 to decompress a file" << endl;
 	cout << "input 3 to exit" << endl;
-	char filename[256] = { 0 };
-	char filename2[256] = { 0 };
+	
 
 	HuffmanTree *ht;
 
@@ -37,6 +36,8 @@ int main()
 		if (i == 1)
 		{
 			cout << "please input the path of file you want to compress:" << endl;
+			char filename[256] = { 0 };
+			char filename2[256] = { 0 };
 			cin >> filename;
 			strcat_s(filename2, filename);
 			strcat_s(filename2, ".huf");
@@ -60,8 +61,10 @@ int main()
 		}		
 		else if (i == 2)
 		{
+			char filename[256] = { 0 };
+			cin >> filename;
 			cout << "please input the path of file you want to decompress:" << endl;
-			DeCompress::decompress(filename2, ht);
+			DeCompress::decompress(filename, ht);
 		}
 		else if (i == 3)
 		{

@@ -29,13 +29,16 @@ string DeCompress::int2str(int num)
 	return s;
 }
 
-void DeCompress::decompress(char *filename2, HuffmanTree *ht)
+void DeCompress::decompress(char *filename, HuffmanTree *ht)
 {
 	//read file head
 	Head _head;
 	FILE *_in;
-	errno_t _err = fopen_s(&_in, filename2, "rb");
+	errno_t _err = fopen_s(&_in, filename, "rb");
 	char decode[256];
+	char filename2[256] = { 0 };
+	strcat_s(filename2, filename);
+	strcat_s(filename2, ".huf");
 	fread(&_head, sizeof(_head), 1, _in);
 
 	FILE *_out;
